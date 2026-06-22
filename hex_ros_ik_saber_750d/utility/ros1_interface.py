@@ -14,7 +14,7 @@ from geometry_msgs.msg import PoseStamped
 from sensor_msgs.msg import JointState
 from std_msgs.msg import Bool
 
-from hex_util_msg.dataclass import HexBaseJntState, HexBasePose, HexBaseVector3, HexBaseQuaternion
+from hex_util_msg.dataclass import HexDcBaseJntState, HexDcBasePose, HexDcBaseVector3, HexDcBaseQuaternion
 
 from .interface_base import InterfaceBase
 
@@ -42,24 +42,25 @@ class DataInterface(InterfaceBase):
         }
         # model
         self._model_param = {
-            "path": rospy.get_param('~model_path', ""),
-            "base": rospy.get_param('~model_base', "base_link"),
-            "joint_names": rospy.get_param('~model_joint_names', [""]),
-            "end_effector": rospy.get_param('~model_end_effector', ""),
-            "end_quat": np.array(
-                rospy.get_param('~model_end_quat', [1.0, 0.0, 0.0, 0.0])),
+            "path":
+            rospy.get_param('~model_path', ""),
+            "base":
+            rospy.get_param('~model_base', "base_link"),
+            "joint_names":
+            rospy.get_param('~model_joint_names', [""]),
+            "end_effector":
+            rospy.get_param('~model_end_effector', ""),
+            "end_quat":
+            np.array(rospy.get_param('~model_end_quat', [1.0, 0.0, 0.0, 0.0])),
         }
         # limit
         self._limit_param = {
-            "pos": np.array(
-                self._str_to_list(
-                    rospy.get_param('~limit_pos', [""]))),
-            "vel": np.array(
-                self._str_to_list(
-                    rospy.get_param('~limit_vel', [""]))),
-            "acc": np.array(
-                self._str_to_list(
-                    rospy.get_param('~limit_acc', [""]))),
+            "pos":
+            np.array(self._str_to_list(rospy.get_param('~limit_pos', [""]))),
+            "vel":
+            np.array(self._str_to_list(rospy.get_param('~limit_vel', [""]))),
+            "acc":
+            np.array(self._str_to_list(rospy.get_param('~limit_acc', [""]))),
             "joint_err": rospy.get_param('~limit_joint_err', 0.1),
             "se3_err": rospy.get_param('~limit_se3_err', 0.1),
         }
@@ -133,7 +134,7 @@ class DataInterface(InterfaceBase):
     def logf(self, msg, *args, **kwargs):
         rospy.logfatal(msg, *args, **kwargs)
 
-    def pub_joint_state(self, out: HexBaseJntState):
+    def pub_joint_state(self, out: HexDcBaseJntState):
         msg = JointState()
         msg.header.stamp = rospy.Time.now()
         msg.header.frame_id = self._model_param["base"]
@@ -143,7 +144,7 @@ class DataInterface(InterfaceBase):
         msg.effort = out.effort.tolist()
         self.__joint_state_pub.publish(msg)
 
-    def pub_debug_pose(self, out: HexBasePose):
+    def pub_debug_pose(self, out: HexDcBasePose):
         msg = PoseStamped()
         msg.header.stamp = rospy.Time.now()
         msg.header.frame_id = self._model_param["base"]
@@ -162,13 +163,13 @@ class DataInterface(InterfaceBase):
         self.__ik_success_pub.publish(msg)
 
     def __target_pose_callback(self, msg: PoseStamped):
-        target_pose = HexBasePose(
-            position=HexBaseVector3(
+        target_pose = HexDcBasePose(
+            position=HexDcBaseVector3(
                 x=msg.pose.position.x,
                 y=msg.pose.position.y,
                 z=msg.pose.position.z,
             ),
-            orientation=HexBaseQuaternion(
+            orientation=HexDcBaseQuaternion(
                 x=msg.pose.orientation.x,
                 y=msg.pose.orientation.y,
                 z=msg.pose.orientation.z,
