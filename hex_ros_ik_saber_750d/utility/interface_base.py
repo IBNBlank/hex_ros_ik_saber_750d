@@ -10,7 +10,7 @@ import json
 from collections import deque
 from typing import Any, Optional
 from abc import ABC, abstractmethod
-from hex_util_msg.dataclass import HexBaseJntState, HexBasePose
+from hex_util_msg.dataclass import HexDcBaseJntState, HexDcBasePose
 
 
 class InterfaceBase(ABC):
@@ -96,11 +96,11 @@ class InterfaceBase(ABC):
     ### publishers
     ####################
     @abstractmethod
-    def pub_joint_state(self, out: HexBaseJntState):
+    def pub_joint_state(self, out: HexDcBaseJntState):
         raise NotImplementedError("InterfaceBase.pub_joint_state")
 
     @abstractmethod
-    def pub_debug_pose(self, out: HexBasePose):
+    def pub_debug_pose(self, out: HexDcBasePose):
         raise NotImplementedError("InterfaceBase.pub_debug_pose")
 
     @abstractmethod
@@ -124,5 +124,5 @@ class InterfaceBase(ABC):
             return ret
 
     # get target pose
-    def get_target_pose(self, latest: bool = False) -> Optional[HexBasePose]:
+    def get_target_pose(self, latest: bool = False) -> Optional[HexDcBasePose]:
         return self.deque_helper(self._target_pose_deque, latest)

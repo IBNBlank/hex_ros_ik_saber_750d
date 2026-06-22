@@ -9,7 +9,7 @@
 import os
 import sys
 import numpy as np
-from hex_util_msg.dataclass import HexBaseJntState, HexBasePose, HexBaseVector3, HexBaseQuaternion
+from hex_util_msg.dataclass import HexDcBaseJntState, HexDcBasePose, HexDcBaseVector3, HexDcBaseQuaternion
 from hex_util_ros import HexDynUtil, part2se3, se32part
 
 scrpit_path = os.path.abspath(os.path.dirname(__file__))
@@ -37,7 +37,7 @@ class IkSaber750d:
 
         ### variables
         self.__cur_tar_se3 = None
-        self.__cur_jnt_state = HexBaseJntState(
+        self.__cur_jnt_state = HexDcBaseJntState(
             position=np.array(
                 [0.0, 0.80224039, 1.73428836, 0.0, -0.96573333, 0.0]),
             velocity=np.zeros(6),
@@ -91,13 +91,13 @@ class IkSaber750d:
                         ik_ee_pos, ik_ee_quat = self.__dyn_util.forward_kinematics(
                             self.__cur_jnt_state.position)[-1]
                         self.__data_interface.pub_debug_pose(
-                            HexBasePose(
-                                position=HexBaseVector3(
+                            HexDcBasePose(
+                                position=HexDcBaseVector3(
                                     x=ik_ee_pos[0],
                                     y=ik_ee_pos[1],
                                     z=ik_ee_pos[2],
                                 ),
-                                orientation=HexBaseQuaternion(
+                                orientation=HexDcBaseQuaternion(
                                     w=ik_ee_quat[0],
                                     x=ik_ee_quat[1],
                                     y=ik_ee_quat[2],
@@ -105,6 +105,7 @@ class IkSaber750d:
                                 ),
                             ))
                 else:
+                    print(f"#### ik failed ####")
                     self.__data_interface.pub_ik_success(False)
 
             self.__data_interface.pub_joint_state(self.__cur_jnt_state)
