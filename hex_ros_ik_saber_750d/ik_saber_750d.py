@@ -12,8 +12,8 @@ import numpy as np
 from hex_util_msg.dataclass import HexBaseJntState, HexBasePose, HexBaseVector3, HexBaseQuaternion
 from hex_util_ros import HexDynUtil, part2se3, se32part
 
-scrpit_path = os.path.abspath(os.path.dirname(__file__))
-sys.path.append(scrpit_path)
+script_path = os.path.abspath(os.path.dirname(__file__))
+sys.path.append(script_path)
 from utility import DataInterface
 
 

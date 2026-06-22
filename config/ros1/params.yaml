@@ -11,7 +11,8 @@ model_joint_names:
   - "joint_4"
   - "joint_5"
   - "joint_6"
-model_end_effector: link_6
+  - "joint_7"
+model_end_effector: link_7
 model_end_quat: [1.0, 0.0, 0.0, 0.0]
 
 # limit
