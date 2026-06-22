@@ -1,218 +1,453 @@
 <?xml version="1.0" encoding="utf-8"?>
-<robot name="hex_ros_ik_saber_750d">
-    <link name="base_link">
-        <inertial>
-            <origin xyz="0.004019 2.7e-05 0.055832" rpy="0 0 0" />
-            <mass value="1.075" />
-            <inertia ixx="0.000942" ixy="-1e-06" ixz="-5.4e-05"
-                     iyy="0.001063" iyz="0.0" izz="0.001057" />
-        </inertial>
-        <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/base_link.STL" />
-            </geometry>
-            <material name="">
-                <color rgba="0.6 0.6 0.6 1" />
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/base_link.STL" />
-            </geometry>
-        </collision>
-    </link>
-  
-    <link name="link_1">
-        <inertial>
-            <origin xyz="0.040438 -6.9e-05 0.010724" rpy="0 0 0" />
-            <mass value="1.04678" />
-            <inertia ixx="0.000887" ixy="-3e-06" ixz="-2.8e-05"
-                     iyy="0.000925" iyz="-1e-06" izz="0.000957" />
-        </inertial>
-        <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_1.STL" />
-            </geometry>
-            <material name="">
-                <color rgba="0.6 0.6 0.6 1" />
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_1.STL" />
-            </geometry>
-        </collision>
-    </link>
-    <joint name="joint_1" type="revolute">
-        <origin xyz="0.0075 0 0.0895" rpy="1.5707963268 -1.5707963268 3.14159265359" />
-        <parent link="base_link" />
-        <child link="link_1" />
-        <axis xyz="1 0 0" />
-        <limit effort="40.0" lower="-2.9670597283903604" upper="2.9670597283903604" velocity="1.0"/>
-        <dynamics damping="20" friction="2"/>
-    </joint>
-
-    <link name="link_2">
-        <inertial>
-            <origin xyz="0.000984 0.222985 -0.004782" rpy="0 0 0" />
-            <mass value="1.366628" />
-            <inertia ixx="0.020238" ixy="1.6e-05" ixz="-5e-06"
-                     iyy="0.001281" iyz="0.000251" izz="0.019949" />
-        </inertial>
-        <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_2.STL" />
-            </geometry>
-            <material name="">
-                <color rgba="0.6 0.6 0.6 1" />
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_2.STL" />
-            </geometry>
-        </collision>
-    </link>
-    <joint name="joint_2" type="revolute">
-        <origin xyz="0.043 0 0" rpy="0 0 -1.5707963268" />
-        <parent link="link_1" />
-        <child link="link_2" />
-        <axis xyz="0 0 1" />
-        <limit effort="40.0" lower="-1.5707963268" upper="1.5707963268" velocity="1.0"/>
-        <dynamics damping="20" friction="2"/>
-    </joint>
-
-    <link name="link_3">
-        <inertial>
-            <origin xyz="0.049502 0.062515 -0.001177" rpy="0 0 0" />
-            <mass value="0.802284" />
-            <inertia ixx="0.001075" ixy="-0.000337" ixz="-4e-05"
-                     iyy="0.001131" iyz="-5e-05" izz="0.001304" />
-        </inertial>
-        <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_3.STL" />
-            </geometry>
-            <material name="">
-                <color rgba="0.6 0.6 0.6 1" />
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_3.STL" />
-            </geometry>
-        </collision>
-    </link>
-    <joint name="joint_3" type="revolute">
-        <origin xyz="0 0.3268 0" rpy="3.14159265359 0 1.5707963268" />
-        <parent link="link_2" />
-        <child link="link_3" />
-        <axis xyz="0 0 -1" />
-        <limit effort="40.0" lower="-1.0471975512" upper="3.14159265359" velocity="1.0"/>
-        <dynamics damping="20" friction="2"/>
-    </joint>
-
-    <link name="link_4">
-        <inertial>
-            <origin xyz="0.16487 -0.006083 -0.001694" rpy="0 0 0" />
-            <mass value="0.907814" />
-            <inertia ixx="0.000563" ixy="0.000225" ixz="-9.1e-05"
-                     iyy="0.004529" iyz="1e-05" izz="0.004594" />
-        </inertial>
-        <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_4.STL" />
-            </geometry>
-            <material name="">
-                <color rgba="0.6 0.6 0.6 1" />
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_4.STL" />
-            </geometry>
-        </collision>
-    </link>
-    <joint name="joint_4" type="revolute">
-        <origin xyz="0.08847 0.072 -7.0034E-05" rpy="1.5707963268 0 0" />
-        <parent link="link_3" />
-        <child link="link_4" />
-        <axis xyz="1 0 0" />
-        <limit effort="40.0" lower="-2.79252680319" upper="2.79252680319" velocity="1.0"/>
-        <dynamics damping="20" friction="2"/>
-    </joint>
-
-    <link name="link_5">
-        <inertial>
-            <origin xyz="0.078713 0.000365 0.003515" rpy="0 0 0" />
-            <mass value="0.66461" />
-            <inertia ixx="0.000417" ixy="1e-06" ixz="0.00012"
-                     iyy="0.000725" iyz="-3e-06" izz="0.000665" />
-        </inertial>
-        <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_5.STL" />
-            </geometry>
-            <material name="">
-                <color rgba="0.6 0.6 0.6 1" />
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_5.STL" />
-            </geometry>
-        </collision>
-    </link>
-    <joint name="joint_5" type="revolute">
-        <origin xyz="0.206 0 0" rpy="1.5707963268 0 0" />
-        <parent link="link_4" />
-        <child link="link_5" />
-        <axis xyz="0 0 1" />
-        <limit effort="40.0" lower="-1.5707963268" upper="1.5707963268" velocity="1.0"/>
-        <dynamics damping="20" friction="2"/>
-    </joint>
-
-    <link name="link_6">
-        <inertial>
-            <origin xyz="0.000752 8.5e-05 0.024275" rpy="0 0 0" />
-            <mass value="0.0" />
-            <inertia ixx="0.0" ixy="0.0" ixz="0.0"
-                     iyy="0.0" iyz="0.0" izz="0.0" />
-        </inertial>
-        <visual>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_6.STL" />
-            </geometry>
-            <material name="">
-                <color rgba="0.6 0.6 0.6 1" />
-            </material>
-        </visual>
-        <collision>
-            <origin xyz="0 0 0" rpy="0 0 0" />
-            <geometry>
-                <mesh filename="package://hex_ros_ik_saber_750d/urdf/meshes/link_6.STL" />
-            </geometry>
-        </collision>
-    </link>
-    <joint name="joint_6" type="revolute">
-        <origin xyz="0.11 0 0" rpy="1.5707963268 0.0 1.5707963268" />
-        <parent link="link_5" />
-        <child link="link_6" />
-        <axis xyz="0 0 1" />
-        <limit effort="40.0" lower="-2.9670597283903604" upper="2.9670597283903604" velocity="1.0"/>
-        <dynamics damping="20" friction="2"/>
-    </joint>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="xpkg_urdf_saber">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.000727949515048955 -5.69883664269332E-08 0.0406393454277163"
+        rpy="0 0 0" />
+      <mass
+        value="0.556279812163046" />
+      <inertia
+        ixx="0.000590617003306285"
+        ixy="4.35119563492651E-10"
+        ixz="1.56046542788063E-05"
+        iyy="0.0006676421462764"
+        iyz="-8.87629683920929E-11"
+        izz="0.000590125243389963" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="link_1">
+    <inertial>
+      <origin
+        xyz="0.0380569188238271 -1.00405257210511E-05 0.00193157767349443"
+        rpy="0 0 0" />
+      <mass
+        value="0.210052072515294" />
+      <inertia
+        ixx="0.000219613801652011"
+        ixy="2.14295883024703E-10"
+        ixz="-2.08661900718095E-06"
+        iyy="0.000200657406924171"
+        iyz="-4.75124852955826E-12"
+        izz="0.000272022930816225" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/link_1.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/link_1.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_1"
+    type="revolute">
+    <origin
+      xyz="0.008 0 0.085"
+      rpy="1.5708 -1.5708 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="link_1" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-2.07"
+      upper="2.07"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="link_2">
+    <inertial>
+      <origin
+        xyz="-1.75203555596425E-05 0.0677414565850336 0.00293368589914122"
+        rpy="0 0 0" />
+      <mass
+        value="0.546006723511329" />
+      <inertia
+        ixx="0.000345709425927775"
+        ixy="3.03772295527459E-08"
+        ixz="6.84015684110725E-08"
+        iyy="0.000191653297149786"
+        iyz="-4.86188422315019E-08"
+        izz="0.000455451241496624" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/link_2.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/link_2.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_2"
+    type="revolute">
+    <origin
+      xyz="0.048 0 0"
+      rpy="0 0 -1.5708" />
+    <parent
+      link="link_1" />
+    <child
+      link="link_2" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="link_3">
+    <inertial>
+      <origin
+        xyz="0.0904931183819759 -0.00298465076083372 -0.000124658321724598"
+        rpy="0 0 0" />
+      <mass
+        value="0.507512757354665" />
+      <inertia
+        ixx="0.000279446440854039"
+        ixy="-3.33608066541714E-05"
+        ixz="-4.69629980521365E-06"
+        iyy="0.00127294463891755"
+        iyz="-4.08730111467988E-06"
+        izz="0.00124447090823196" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/link_3.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/link_3.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_3"
+    type="revolute">
+    <origin
+      xyz="0 0.121 0"
+      rpy="-0.14087 0.0047123 1.604" />
+    <parent
+      link="link_2" />
+    <child
+      link="link_3" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-2.79"
+      upper="2.79"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="link_4">
+    <inertial>
+      <origin
+        xyz="0.0660971954244285 1.34715312103545E-07 -0.000592942917765256"
+        rpy="0 0 0" />
+      <mass
+        value="0.462861602611646" />
+      <inertia
+        ixx="0.000416473388437348"
+        ixy="-6.10266734021719E-09"
+        ixz="-4.30219101175296E-06"
+        iyy="0.000944302504723845"
+        iyz="5.74406059677713E-08"
+        izz="0.000780559660017919" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/link_4.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/link_4.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_4"
+    type="revolute">
+    <origin
+      xyz="0.13642 -0.0045787 0"
+      rpy="-3.0006 0 -0.03355" />
+    <parent
+      link="link_3" />
+    <child
+      link="link_4" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="link_5">
+    <inertial>
+      <origin
+        xyz="0.102110507707808 -7.36927766003335E-05 2.37691998213243E-05"
+        rpy="0 0 0" />
+      <mass
+        value="0.726565505856402" />
+      <inertia
+        ixx="0.000397963245903002"
+        ixy="-4.78785002718304E-06"
+        ixz="-1.11508538455264E-06"
+        iyy="0.00338425816605582"
+        iyz="-2.27005034989937E-07"
+        izz="0.00338407321792173" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/link_5.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/link_5.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_5"
+    type="revolute">
+    <origin
+      xyz="0.1325 0 0"
+      rpy="1.5708 0 0" />
+    <parent
+      link="link_4" />
+    <child
+      link="link_5" />
+    <axis
+      xyz="1 0 0" />
+    <limit
+      lower="-2.79"
+      upper="2.79"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="link_6">
+    <inertial>
+      <origin
+        xyz="0.055643301868383 0.000254122535465515 0.000531191703078869"
+        rpy="0 0 0" />
+      <mass
+        value="0.281670524443241" />
+      <inertia
+        ixx="0.000132725156471444"
+        ixy="-1.35372027647478E-06"
+        ixz="1.35321790740373E-09"
+        iyy="0.000203534008832405"
+        iyz="-1.51233313386899E-09"
+        izz="0.000216964525176621" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/link_6.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/link_6.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_6"
+    type="revolute">
+    <origin
+      xyz="0.17204 0 0"
+      rpy="1.5708 0 0" />
+    <parent
+      link="link_5" />
+    <child
+      link="link_6" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="-1.57"
+      upper="1.57"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="link_7">
+    <inertial>
+      <origin
+        xyz="1.73472347597681E-18 -1.32137139771671E-19 0.0117461777308054"
+        rpy="0 0 0" />
+      <mass
+        value="0.0295686940024556" />
+      <inertia
+        ixx="7.31988469402711E-06"
+        ixy="-7.52400839589017E-22"
+        ixz="3.53458271200406E-22"
+        iyy="3.42285660750929E-06"
+        iyz="-1.01554822215164E-22"
+        izz="8.95181301289559E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/link_7.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://xpkg_urdf_saber/meshes/link_7.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="joint_7"
+    type="revolute">
+    <origin
+      xyz="0.095 0 0"
+      rpy="1.5708 0 1.5708" />
+    <parent
+      link="link_6" />
+    <child
+      link="link_7" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-3.14"
+      upper="3.14"
+      effort="0"
+      velocity="0" />
+  </joint>
 </robot>
