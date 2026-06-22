@@ -39,7 +39,7 @@ class IkSaber750d:
         self.__cur_tar_se3 = None
         self.__cur_jnt_state = HexDcBaseJntState(
             position=np.array(
-                [0.0, 0.80224039, 0.0, 1.73428836, 0.0, -0.96573333, 0.0]),
+                [0.0, 0.57, 0.0, 1.3, 0.0, -0.3, 0.0]),
             # position=np.zeros(7),
             velocity=np.zeros(7),
             effort=np.zeros(7),
@@ -106,6 +106,7 @@ class IkSaber750d:
                                 ),
                             ))
                 else:
+                    print(f"#### ik failed ####")
                     self.__data_interface.pub_ik_success(False)
 
             self.__data_interface.pub_joint_state(self.__cur_jnt_state)
